@@ -1,0 +1,81 @@
+.app {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+.store-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e293b 100%);
+}
+
+.store-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.blur-circle {
+  position: absolute;
+  width: 384px;
+  height: 384px;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.blur-left {
+  top: 160px;
+  left: 80px;
+  background: #a855f7;
+}
+
+.blur-right {
+  bottom: 160px;
+  right: 80px;
+  background: #06b6d4;
+}
+
+.store-container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.store-content {
+  display: flex;
+  gap: 32px;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-results p {
+  font-size: 1.5rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .store-content {
+    flex-direction: column;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}

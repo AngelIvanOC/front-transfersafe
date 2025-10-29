@@ -1,0 +1,89 @@
+.sidebar {
+  width: 256px;
+  background: rgba(88, 28, 135, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 96px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.sidebar-section {
+  margin-bottom: 32px;
+}
+
+.sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #d8b4fe;
+}
+
+.price-inputs {
+  display: flex;
+  gap: 8px;
+}
+
+.price-input {
+  width: 100%;
+  background: rgba(88, 28, 135, 0.5);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  color: #fff;
+  outline: none;
+}
+
+.price-input:focus {
+  border-color: #a855f7;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.category-label:hover .category-text {
+  color: #d8b4fe;
+}
+
+.category-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid rgba(168, 85, 247, 0.5);
+  background: rgba(88, 28, 135, 0.5);
+  cursor: pointer;
+}
+
+.category-checkbox:checked {
+  background: #a855f7;
+}
+
+.category-text {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+}
