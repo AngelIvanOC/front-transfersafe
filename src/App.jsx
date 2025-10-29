@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import { SearchBar } from "./components/SearchBar";
 import { Sidebar } from "./components/Sidebar";
 import { ProductCard } from "./components/ProductCard";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
 import { products } from "./data/products";
 import "./App.css";
 
-function App() {
+function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [minPrice, setMinPrice] = useState("");
@@ -30,7 +33,7 @@ function App() {
   });
 
   return (
-    <div className="app">
+    <>
       <Header />
 
       {showHero && <Hero onExplore={() => setShowHero(false)} />}
@@ -70,7 +73,21 @@ function App() {
           </div>
         </div>
       </section>
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,8 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login");
   };
 
   return (
@@ -25,7 +32,7 @@ function Header() {
             </a>
           </div>
         </div>
-        <button className="login-btn">
+        <button className="login-btn" onClick={handleLoginClick}>
           <span>Login</span>
         </button>
       </nav>
