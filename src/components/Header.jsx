@@ -18,7 +18,7 @@ function Header() {
         <div className="nav-left">
           <div className="logo" onClick={scrollToTop}>
             <img
-              src="/src/assets/Logo.png"
+              src="/src/public/Logo.png"
               alt="TransferSafe"
               className="logo-img"
             />
