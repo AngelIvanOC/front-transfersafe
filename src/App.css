@@ -22,7 +22,7 @@
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("/src/assets/3542463.jpg");
+  background-image: url("/src/public/3542463.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -195,7 +195,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/src/assets/3542463.jpg");
+  background-image: url("/src/public/3542463.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
