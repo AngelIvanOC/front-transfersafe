@@ -654,7 +654,7 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 28px;
   margin-top: 24px;
 }
@@ -706,6 +706,7 @@
 .product-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 25px 60px rgba(168, 85, 247, 0.25);
+  cursor: pointer;
 }
 
 .product-card:hover::before {
@@ -817,7 +818,7 @@
 }
 
 .buy-btn {
-  padding: 12px 24px;
+  padding: 12px 12px;
   background: linear-gradient(135deg, #a855f7, #06b6d4);
   border: none;
   border-radius: 12px;
@@ -833,7 +834,6 @@
 }
 
 .buy-btn::before {
-  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, #9333ea, #0891b2);
