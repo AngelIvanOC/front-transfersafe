@@ -16,7 +16,7 @@ function DashboardNav({ activeSection, onSectionChange }) {
         <div className="dashboard-nav-left">
           <div className="dashboard-logo">
             <img
-              src="/src/public/Logo.png"
+              src="/Logo.png"
               alt="TransferSafe"
               className="dashboard-logo-img"
             />
