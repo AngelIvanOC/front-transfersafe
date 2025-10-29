@@ -287,6 +287,14 @@
   text-align: center;
   padding: 0 24px;
   max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.hero-text-wrapper {
   animation: fade-in-up 1s ease-out;
 }
 
@@ -326,6 +334,8 @@
   cursor: pointer;
   animation: bounce 2s infinite 2s;
   transition: transform 0.3s, color 0.3s;
+  position: absolute;
+  bottom: 0;
 }
 
 .scroll-btn:hover {

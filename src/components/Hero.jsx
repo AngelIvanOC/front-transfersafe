@@ -54,19 +54,21 @@ function Hero({ onExplore }) {
       </div>
 
       <div className="hero-content">
-        <h1 className="hero-title">
-          {titleText}
-          {showCursor && <span className="cursor">|</span>}
-        </h1>
-        <p className="hero-description">
-          Tu destino para boletos de eventos, tecnología de vanguardia y
-          experiencias inolvidables. Descubre un nuevo mundo de posibilidades.
-        </p>
-
-        <button onClick={onExplore} className="scroll-btn">
-          <ChevronDown size={48} />
-        </button>
+        <div className="hero-text-wrapper">
+          <h1 className="hero-title">
+            {titleText}
+            {showCursor && <span className="cursor">|</span>}
+          </h1>
+          <p className="hero-description">
+            Tu destino para boletos de eventos, tecnología de vanguardia y
+            experiencias inolvidables. Descubre un nuevo mundo de posibilidades.
+          </p>
+        </div>
       </div>
+
+      <button onClick={onExplore} className="scroll-btn">
+        <ChevronDown size={48} />
+      </button>
     </section>
   );
 }
