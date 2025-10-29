@@ -2,40 +2,82 @@
   min-height: 100vh;
   background: #000;
   color: #fff;
+  position: relative;
+}
+
+/* Fondo fijo para toda la aplicación */
+/*.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e293b 100%);
+  z-index: -2;
+}*/
+
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/src/assets/Logo.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.15;
+  z-index: -1;
 }
 
 .store-section {
   position: relative;
   min-height: 100vh;
-  padding: 120px 0 80px;
-  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e293b 100%);
+  padding: 140px 0 80px;
+  background: transparent;
 }
 
 .store-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  opacity: 0.2;
+  opacity: 0.15;
   pointer-events: none;
+  z-index: 0;
 }
 
 .blur-circle {
   position: absolute;
-  width: 384px;
-  height: 384px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(100px);
+  animation: float 15s ease-in-out infinite;
 }
 
 .blur-left {
   top: 160px;
   left: 80px;
-  background: #a855f7;
+  background: radial-gradient(circle, #a855f7, transparent);
+  animation-delay: 0s;
 }
 
 .blur-right {
   bottom: 160px;
   right: 80px;
-  background: #06b6d4;
+  background: radial-gradient(circle, #06b6d4, transparent);
+  animation-delay: 7s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(20px, 30px) scale(1.05);
+  }
 }
 
 .store-container {
@@ -43,11 +85,24 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
+  z-index: 1;
 }
 
 .store-content {
   display: flex;
   gap: 32px;
+  animation: fade-in-up 0.8s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .main-content {
@@ -56,26 +111,78 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 24px;
 }
 
 .no-results {
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
+  animation: fade-in 0.5s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .no-results p {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: #9ca3af;
+  font-weight: 600;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejora del scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #06b6d4);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9333ea, #0891b2);
+}
+
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
 }
 
 @media (max-width: 768px) {
+  .store-section {
+    padding: 120px 0 60px;
+  }
+
   .store-content {
     flex-direction: column;
   }
 
   .products-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .blur-circle {
+    width: 300px;
+    height: 300px;
   }
 }

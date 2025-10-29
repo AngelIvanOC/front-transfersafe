@@ -4,19 +4,31 @@ import "./Hero.css";
 
 function Hero({ onExplore }) {
   const [titleText, setTitleText] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
   const fullTitle = "TransferSafe";
 
   useEffect(() => {
     let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullTitle.length) {
-        setTitleText(fullTitle.slice(0, index));
+    const typingTimer = setInterval(() => {
+      if (index < fullTitle.length) {
+        setTitleText(fullTitle.slice(0, index + 1));
         index++;
       } else {
-        clearInterval(timer);
+        clearInterval(typingTimer);
+        // Mantener el cursor parpadeando después de terminar
+        setTimeout(() => setShowCursor(true), 500);
       }
     }, 150);
-    return () => clearInterval(timer);
+
+    // Cursor parpadeante
+    const cursorTimer = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 530);
+
+    return () => {
+      clearInterval(typingTimer);
+      clearInterval(cursorTimer);
+    };
   }, []);
 
   return (
@@ -50,7 +62,7 @@ function Hero({ onExplore }) {
       <div className="hero-content">
         <h1 className="hero-title">
           {titleText}
-          <span className="cursor">|</span>
+          {showCursor && <span className="cursor">|</span>}
         </h1>
         <p className="hero-description">
           Tu destino para boletos de eventos, tecnología de vanguardia y
