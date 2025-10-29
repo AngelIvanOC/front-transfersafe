@@ -26,7 +26,7 @@ function Login() {
           <div className="login-header">
             <div className="login-logo">
               <img
-                src="/src/assets/Logo.png"
+                src="/Logo.png"
                 alt="TransferSafe"
                 className="login-logo-img"
               />
