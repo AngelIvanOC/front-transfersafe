@@ -1,6 +1,3 @@
-import React from "react";
-import "./Sidebar.css";
-
 const categories = [
   "Eventos",
   "Tecnologia",
@@ -67,4 +64,4 @@ function Sidebar({
   );
 }
 
-export default Sidebar;
+export { Sidebar };

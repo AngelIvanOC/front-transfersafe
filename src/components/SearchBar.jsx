@@ -1,6 +1,5 @@
 import React from "react";
 import { Search } from "lucide-react";
-import "./SearchBar.css";
 
 function SearchBar({ value, onChange }) {
   return (
@@ -17,4 +16,4 @@ function SearchBar({ value, onChange }) {
   );
 }
 
-export default SearchBar;
+export { SearchBar };

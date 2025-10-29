@@ -1,22 +1,23 @@
 import React from "react";
-import "./Header.css";
 
 function Header() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header className="header">
       <nav className="nav">
         <div className="nav-left">
-          <div className="logo">
-            {/* Opción 1: Usar imagen (descomenta y ajusta la ruta) */}
+          <div className="logo" onClick={scrollToTop}>
             <img
-              src="../assets/Logo.png"
+              src="/src/assets/Logo.png"
               alt="TransferSafe"
               className="logo-img"
             />
-            {/* Opción 2: Usar letra (comentar si usas imagen) */}T
           </div>
           <div className="nav-links">
-            <a href="#" className="nav-link">
+            <a href="#" onClick={scrollToTop} className="nav-link">
               Home
             </a>
             <a href="#store" className="nav-link">

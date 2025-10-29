@@ -1,6 +1,3 @@
-import React from "react";
-import "./ProductCard.css";
-
 function ProductCard({ product }) {
   return (
     <div className="product-card">
@@ -23,4 +20,4 @@ function ProductCard({ product }) {
   );
 }
 
-export default ProductCard;
+export { ProductCard };

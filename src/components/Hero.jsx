@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import "./Hero.css";
 
 function Hero({ onExplore }) {
   const [titleText, setTitleText] = useState("");
@@ -15,12 +14,10 @@ function Hero({ onExplore }) {
         index++;
       } else {
         clearInterval(typingTimer);
-        // Mantener el cursor parpadeando después de terminar
         setTimeout(() => setShowCursor(true), 500);
       }
     }, 150);
 
-    // Cursor parpadeante
     const cursorTimer = setInterval(() => {
       setShowCursor((prev) => !prev);
     }, 530);
@@ -54,9 +51,6 @@ function Hero({ onExplore }) {
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
-        <div className="wave wave-1"></div>
-        <div className="wave wave-2"></div>
-        <div className="wave wave-3"></div>
       </div>
 
       <div className="hero-content">

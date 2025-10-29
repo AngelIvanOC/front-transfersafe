@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import SearchBar from "./components/SearchBar";
-import Sidebar from "./components/Sidebar";
-import ProductCard from "./components/ProductCard";
+import { SearchBar } from "./components/SearchBar";
+import { Sidebar } from "./components/Sidebar";
+import { ProductCard } from "./components/ProductCard";
 import { products } from "./data/products";
 import "./App.css";
 
