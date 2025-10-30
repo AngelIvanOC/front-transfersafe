@@ -3,7 +3,7 @@ package utez.edu.mx.transferSave.product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import utez.edu.mx.*;
+
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -32,7 +32,7 @@ public class ProductService {
 
     @Transactional
     public Product createProduct(Product product) {
-        product.setStatus(ProductStatus.AVAILABLE);
+        product.setStatus(Product.ProductStatus.AVAILABLE);
         return productRepository.save(product);
     }
 

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import utez.edu.mx.*;
+
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -31,7 +31,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     );
 
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) AND p.status = :status")
-    List<Product> searchByName(@Param("searchTerm") String searchTerm, @Param("status") ProductStatus status);
+    List<Product> searchByName(@Param("searchTerm") String searchTerm, @Param("status") Product.ProductStatus status);
 
     @Query("SELECT p FROM Product p WHERE " +
             "(:category IS NULL OR p.category = :category) AND " +
@@ -42,10 +42,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             @Param("category") String category,
             @Param("minPrice") BigDecimal minPrice,
             @Param("maxPrice") BigDecimal maxPrice,
-            @Param("status") ProductStatus status
+            @Param("status") Product.ProductStatus status
     );
 
     Long countByCategory(String category);
 
-    boolean existsByIdAndStatus(Long id, ProductStatus status);
+    boolean existsByIdAndStatus(Long id, Product.ProductStatus status);
 }
