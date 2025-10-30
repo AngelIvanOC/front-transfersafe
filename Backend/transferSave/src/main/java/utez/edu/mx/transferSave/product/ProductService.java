@@ -1,11 +1,9 @@
-package utez.edu.mx.TransferSave.modules.product.service;
+package utez.edu.mx.transferSave.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import utez.edu.mx.TransferSave.modules.product.model.Product;
-import utez.edu.mx.TransferSave.modules.product.model.Product.ProductStatus;
-import utez.edu.mx.TransferSave.modules.product.repository.ProductRepository;
+import utez.edu.mx.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,7 +22,7 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public List<Product> getAvailableProducts() {
-        return productRepository.findByStatus(ProductStatus.AVAILABLE);
+        return productRepository.findByStatus(Product.ProductStatus.AVAILABLE);
     }
 
     @Transactional(readOnly = true)
@@ -57,7 +55,7 @@ public class ProductService {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
 
-        product.setStatus(ProductStatus.INACTIVE);
+        product.setStatus(Product.ProductStatus.INACTIVE);
         productRepository.save(product);
     }
 
@@ -71,7 +69,7 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public List<Product> getProductsByCategory(String category) {
-        return productRepository.findByCategoryAndStatus(category, ProductStatus.AVAILABLE);
+        return productRepository.findByCategoryAndStatus(category, Product.ProductStatus.AVAILABLE);
     }
 
     @Transactional(readOnly = true)
@@ -82,24 +80,24 @@ public class ProductService {
     @Transactional(readOnly = true)
     public List<Product> getProductsByPriceRange(BigDecimal minPrice, BigDecimal maxPrice) {
         return productRepository.findAvailableProductsByPriceRange(
-                minPrice, maxPrice, ProductStatus.AVAILABLE
+                minPrice, maxPrice, Product.ProductStatus.AVAILABLE
         );
     }
 
     @Transactional(readOnly = true)
     public List<Product> searchProducts(String searchTerm) {
-        return productRepository.searchByName(searchTerm, ProductStatus.AVAILABLE);
+        return productRepository.searchByName(searchTerm, Product.ProductStatus.AVAILABLE);
     }
 
     @Transactional(readOnly = true)
     public List<Product> searchWithFilters(String category, BigDecimal minPrice, BigDecimal maxPrice) {
         return productRepository.findProductsWithFilters(
-                category, minPrice, maxPrice, ProductStatus.AVAILABLE
+                category, minPrice, maxPrice, Product.ProductStatus.AVAILABLE
         );
     }
 
     @Transactional
-    public Product updateProductStatus(Long id, ProductStatus newStatus) {
+    public Product updateProductStatus(Long id, Product.ProductStatus newStatus) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
 
@@ -109,6 +107,6 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public boolean isProductAvailable(Long id) {
-        return productRepository.existsByIdAndStatus(id, ProductStatus.AVAILABLE);
+        return productRepository.existsByIdAndStatus(id, Product.ProductStatus.AVAILABLE);
     }
 }

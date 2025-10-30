@@ -1,11 +1,11 @@
-package utez.edu.mx.TransferSave.modules.product.repository;
+package utez.edu.mx.transferSave.product;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import utez.edu.mx.TransferSave.modules.product.model.Product;
-import utez.edu.mx.TransferSave.modules.product.model.Product.ProductStatus;
+import utez.edu.mx.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,11 +15,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByCategory(String category);
 
-    List<Product> findByStatus(ProductStatus status);
+    List<Product> findByStatus(Product.ProductStatus status);
 
     List<Product> findBySellerId(Long sellerId);
 
-    List<Product> findByCategoryAndStatus(String category, ProductStatus status);
+    List<Product> findByCategoryAndStatus(String category, Product.ProductStatus status);
 
     List<Product> findByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 
@@ -27,7 +27,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAvailableProductsByPriceRange(
             @Param("minPrice") BigDecimal minPrice,
             @Param("maxPrice") BigDecimal maxPrice,
-            @Param("status") ProductStatus status
+            @Param("status") Product.ProductStatus status
     );
 
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) AND p.status = :status")

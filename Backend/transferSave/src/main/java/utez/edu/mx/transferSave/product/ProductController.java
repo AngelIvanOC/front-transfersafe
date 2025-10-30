@@ -1,13 +1,10 @@
-package utez.edu.mx.TransferSave.modules.product.controller;
+package utez.edu.mx.transferSave.product;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import utez.edu.mx.TransferSave.modules.product.model.Product;
-import utez.edu.mx.TransferSave.modules.product.model.Product.ProductStatus;
-import utez.edu.mx.TransferSave.modules.product.service.ProductService;
+import utez.edu.mx.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -38,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
+    public ResponseEntity<Product> createProduct( @RequestBody Product product) {
         try {
             Product createdProduct = productService.createProduct(product);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
@@ -50,7 +47,7 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(
             @PathVariable Long id,
-            @Valid @RequestBody Product productDetails) {
+            @RequestBody Product productDetails) {
         try {
             Product updatedProduct = productService.updateProduct(id, productDetails);
             return ResponseEntity.ok(updatedProduct);
@@ -112,7 +109,7 @@ public class ProductController {
     @PatchMapping("/{id}/status")
     public ResponseEntity<Product> updateProductStatus(
             @PathVariable Long id,
-            @RequestParam ProductStatus status) {
+            @RequestParam Product.ProductStatus status) {
         try {
             Product updatedProduct = productService.updateProductStatus(id, status);
             return ResponseEntity.ok(updatedProduct);
